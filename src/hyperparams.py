@@ -10,7 +10,7 @@ ACTION_NOISE = 0.1  # Conserver le bruit d'action pour favoriser l'exploration
 MAX_GRAD_NORM = 0.5
 LEARNING_STARTS = 100  # Commencer l'apprentissage après 10 000 pas
 BUFFER_SIZE = int(1e6)  # Augmenter la taille du replay buffer à 1 million pour LunarLander
-N_STEPS = 100  # Nombre de pas avant mise à jour
+N_STEPS = 1  # Nombre de pas avant mise à jour
 NB_EVALS = 10 # Nombre d'environements pour le parallel gym agent (pas compris)
 
 
@@ -32,7 +32,7 @@ def get_td3_params():
             "batch_size": BATCH_SIZE,  # Batch augmenté
             "tau_target": TAU_TARGET,  # Mise à jour douce ajustée
             "eval_interval": 1000, # Log tous les n pas
-            "max_epochs": 20_000,
+            "max_epochs": 100_000, # Nombre d'epoch, total time steps = max_epochs * n_steps
             "learning_starts": LEARNING_STARTS,
             "action_noise": ACTION_NOISE,
             "architecture": {
