@@ -1,5 +1,5 @@
 # Hyperparamètres principaux ajustés pour LunarLanderContinuous-v2
-BATCH_SIZE = 128  # Augmenter la taille du batch pour plus de stabilité
+BATCH_SIZE = 256  # Augmenter la taille du batch pour plus de stabilité
 TAU_TARGET = 0.005  # Mise à jour douce des cibles pour une meilleure stabilité
 DISCOUNT_FACTOR = 0.99  # Horizon temporel plus long pour l'environnement LunarLander
 LEARNING_RATE_ACTOR = 1e-3
@@ -31,7 +31,7 @@ def get_td3_params():
             "buffer_size": BUFFER_SIZE,  # Buffer augmenté
             "batch_size": BATCH_SIZE,  # Batch augmenté
             "tau_target": TAU_TARGET,  # Mise à jour douce ajustée
-            "eval_interval": 1000, # Log tous les n pas
+            "eval_interval": 1, # Log tous les n pas
             "max_epochs": 100_000, # Nombre d'epoch, total time steps = max_epochs * n_steps
             "learning_starts": LEARNING_STARTS,
             "action_noise": ACTION_NOISE,
